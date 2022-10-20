@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/project.css">
+  <link rel="stylesheet" href="./css/forModals.css">
+  <link rel="stylesheet" href="./css/aboutus.css">
+  <link rel="stylesheet" href="./css/loginStyle.css">
+  <link rel="stylesheet" href="./css/footer.css">
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/5/5a/Car_icon_alone.png">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Malevia Renting Car</title>
+</head>
+
+<header id="topNavHide">
+  <div class="topnav">
+    <a style="float: left; pointer-events: none; padding-top: 20px;"> <img src="./logo.png"
+        style="width: 100px; height: 60px;" alt="">MaLeVia Renting</a>
+    <a onclick="logOut()">LogOut</a>
+    <a id="about" onclick="selected_nav_bar('aboutUs', 'about')">About</a>
+    <a id="cart" class="notif" onclick="selected_nav_bar('myCart', 'cart')">My Cart</a>
+    <a id="add" onclick="selected_nav_bar('addDetails', 'add')">Add Car Details</a>
+    <a id="list" onclick="selected_nav_bar('listOfCars', 'list')">List of Cars</a>
+    <a id="home" onclick="selected_nav_bar('dashboard', 'home')"> Dashboard </a>
+    <a id="landPage" onclick="selected_nav_bar('landingPage', 'home')"> Home </a>
+  </div>
+</header><br><br><br>
+
+
+
+<body>
+
+  <div class="logInForm" id="logInForm">
+    <center>
+      <h2 onclick="adminLogIn()">Log-In Form</h2>
+    </center><br>
+    <div class="input-container">
+      <i class="fa fa-user icon"></i>
+      <input id="username" type="text" placeholder="Username" name="usrnm">
+    </div><br>
+
+    <div class="input-container">
+      <i class="fa fa-key icon"></i>
+      <input id="password" type="password" placeholder="Password" name="psw">
+    </div><br>
+
+    <button onclick="loginFunction()" type="submit" class="btn">LogIn</button>
+    <p>Don't have any account? Click <b onclick="showSignUpPage()" style="color: blue;">here</b> to Sign-Up!</p>
+  </div>
+
+
+  <div class="logInForm" id="signUpForm">
+    <center>
+      <h2>Sign-Up Form</h2>
+    </center><br>
+    <div class="input-container">
+      <i class="fa fa-user icon"></i>
+      <input id="fName" type="text" placeholder="FullName" name="usrnm">
+    </div>
+
+    <div class="input-container">
+      <i class="fa fa-envelope icon"></i>
+      <input id="email" type="email" placeholder="Email" name="usrnm">
+    </div>
+
+    <div class="input-container">
+      <i class="fa fa-birthday-cake icon"></i>
+      <input id="bDate" type="date" placeholder="Birthday" name="usrnm">
+    </div>
+
+    <div class="input-container">
+      <i class="fa fa-envelope icon"></i>
+      <select style="margin-top: 10px;" id="sOption">
+        <option disabled>Select Option</option>
+        <option value="Lessor">Admin</option>
+        <option value="Lessee">Customer</option>
+      </select>
+    </div>
+
+    <div class="input-container">
+      <i class="fa fa-user icon"></i>
+      <input id="uName" type="text" placeholder="Username" name="usrnm">
+    </div>
+
+    <div class="input-container">
+      <i class="fa fa-key icon"></i>
+      <input id="pWord" type="password" placeholder="Password" name="psw">
+    </div>
+
+    <button onclick="signUpFunction()" type="submit" class="btn">Register</button>
+    <p>Already have an account? Click <b onclick="showSignUpPage()" style="color: blue; ">here</b> to Log-in!</p>
+  </div><br>
+
+
+  <div id="needToLogged">
+
+    <!-- For home content  -->
+
+    <div id="landingPage">
+      <div class="landingPage">
+        <div class="w3-container w3-center w3-animate-bottom"><br><br>
+          <h2 style="font-size: 100px; color: white;">Welcome to MaLeVia Car Renting!</h2>
+        </div>        
+      </div>
+    </div>
+
+    <div id="dashboard"><br><br>
+
+      <div class="dashboardRow">
+        <div class="dashboardColumn">
+          <canvas id="myChart"
+            style="width:100%;max-width:1000px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);"></canvas>
+        </div>
+        <div class="dashboardColumn" style="width: 40%;text-align: center;">
+          <h3>Income for a Month of:</h3>
+          <div class="dashboardCard">
+            <div class="dashboardCard">
+              <h3 id="value">Card 2</h3>
+            </div>
+            <select id="month" name="month" onchange="getSelectedMonth()">
+              <option value="January">January</option>
+              <option value="February">February</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="August">August</option>
+              <option value="September">September</option>
+              <option value="October">October</option>
+              <option value="November">November</option>
+              <option value="December">December</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="listOfCars">
+      <div class="row">
+        <div id="demo"></div>
+      </div>
+    </div>
+
+    <div id="addDetails"><br>
+
+      <div class="form">
+        <div style="margin-left: 40%;">
+          <div class="inputWrapper">
+            <img id="output_image" height="150px" width="150px">
+            <input class="fileInput" type="file" accept="image/*" onchange="select_image(event)">
+          </div><br>
+          <p>Select an Image....</p>
+        </div><br>
+
+        <label for="carName">Car Name</label>
+        <input type="text" id="carName" name="firstname" placeholder="Car name..">
+
+        <label for="rent">Rent per Day</label>
+        <input type="number" id="rent" name="rent" placeholder="Rent per Day..">
+
+        <label for="brand">Brand</label>
+        <input type="text" id="brand" name="lastname" placeholder="Brand name..">
+
+        <label for="description">Description</label>
+        <textarea id="desc"></textarea><br><br>
+
+        <button onclick="add_new_car_details()">Submit</button>
+      </div>
+
+    </div>
+
+
+    <div id="myCart">
+      <br><br>
+
+      <div class="w3-container">
+        <ul class="w3-ul w3-card-4">
+          <div id="rented"></div>
+          <div id="cartAdded"></div>
+        </ul>
+      </div>
+
+    </div>
+
+
+    <div id="aboutUs">
+
+      <div class="about-section">
+        <h1>About Us Page</h1>
+        <p>MaLeVia Van Renting a Car offered a safe and affordable transportation services.</p>
+        <p>Our customer would not be hustle for to look for a service to tour or to go to a place that they want to visit. </p>
+        <p>We provide safety travel of the tourist</p> 
+        <p>To provide a health safety tour for the tourist</p>  
+        <p>To promote our local tourists spots</p>  
+        <p> To provide free travel for those who have a special occations such as wedding and debut.</p> 
+        
+      </div>
+
+      <h2 style="text-align:center">Our Team</h2>
+      <div class="aboutRow">
+        <div class="aboutColumn">
+          <div class="aboutCard">
+            <img src="./profileImages/grasya.jpg" alt="Jane" style="width:50%;">
+            <div class="aboutContainer">
+              <h2>Mary Grace Elias</h2>
+              <p class="title">09128701925</p>
+              <p>"Your safety is all that matters"</p>
+              <p>mary_grace.elias@student.passerellesnumeriques.org</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="aboutColumn">
+          <div class="aboutCard">
+            <img src="./profileImages/les.jpg" alt="Mike" style="width:60%;">
+            <div class="aboutContainer">
+              <h2>Lesly Bataluna</h2>
+              <p class="title">09098834765</p>
+              <p>"True happiness is when you see your love ones happy"</p>
+              <p>lesly.bataluna@student.passerellesnumeriques.org</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="aboutColumn">
+          <div class="aboutCard">
+            <img src="./profileImages/via.jpg" alt="John" style="width:50%;">
+            <div class="aboutContainer">
+              <h2>Via Enopia</h2>
+              <p class="title">09070265324</p>
+              <p>"Family are those who will stay with you if you are in trouble."</p>
+              <p>via.enopia@student.passerellesnumeriques.org</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br><br><br>
+    </div>
+  </div>
+
+</body>
+<div class="footer" id="footer">
+  <footer style="background-color: pink; height: 50px;">
+    <center><p style="padding-top: 15px; font-size:medium">All Rights Reserved 2022</p></center>
+  </footer>
+  <p>Footer</p>
+</div>
+
+<!-- <footer style="background-color: pink; height: 50px;">
+  <center><p style="padding-top: 15px; font-size:medium">All Rights Reserved 2022</p></center>
+</footer> -->
+
+</html>
+
+
+<!-- For Modals  -->
+
+<div id="myModal" class="modal">
+
+  <!-- Modal for See Details -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="card" style="text-align: center;">
+      <img id="carImage" src="img_avatar.png" alt="Avatar" style="width:30%;">
+      <div class="container">
+        <h1 id="carRent"></h1>
+        <h3 id="carBrand"></h3>
+        <p id="description"></p>
+        <div class="btnRow">
+          <div class="btnColumn">
+            <button onclick="addToRent()" class="rentCar">Rent the Car</button>
+          </div>
+          <div class="btnColumn">
+            <button onclick="addToCart()">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="./functions/dashboardChart.js"></script>
+<script src="./functions/modalShowDetails.js"></script>
+<script src="./functions/addingDetails.js"></script>
+<script src="./functions/rentCarAction.js"></script>
+<script src="./functions/verificationFunctions.js"></script>
